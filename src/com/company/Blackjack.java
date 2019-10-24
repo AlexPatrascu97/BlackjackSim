@@ -56,28 +56,28 @@ public class Blackjack
 
                     //sub 21 , dar Dealerul are mai mult
                     dealerwins++;
-                    System.out.println("Dealer Wins");
+                    System.out.println("!!!!!!Dealer Wins!!!!!!\n");
 
                 } else if ((player.result < 21) && (dealer.result < player.result)) {
                     //sub 21 , dar Playerul are mai mult
                     playerwins++;
-                    System.out.println("Player Wins");
+                    System.out.println("!!!!!!Player Wins!!!!!!\n");
 
                 } else if (player.result > 21) {
                     //Dealerul sub 21, dar Playerul a trecut peste 21
                     dealerwins++;
-                    System.out.println("Dealer Wins");
+                    System.out.println("!!!!!!Dealer Wins!!!!!!\n");
                 }
 
             } else if (dealer.result > 21 && player.result < 21) {
                 //Playerul sub 21, dar Dealerul a trecut peste 21
                 playerwins++;
-                System.out.println("Player Wins");
+                System.out.println("!!!!!!Player Wins!!!!!!\n");
 
             } else if ((player.result == 21 && dealer.result == 21) || (player.result > 21 && dealer.result > 21)) {
                 //situatia de blackjack egal sau ambele valori peste 21
                 drawresult++;
-                System.out.println("No winner, Next Deal");
+                System.out.println("??????No winner, Next Deal??????\n");
             }
 
         }

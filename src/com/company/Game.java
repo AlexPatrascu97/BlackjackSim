@@ -34,14 +34,15 @@ public class Game
                 hand.add(deck.getCards().get(cardNumber));
                 System.out.println(deck.getCards().get(cardNumber).getName());
                 result = calculateResult(hand);
+
             }
             //hidden card
                 cardNumber++;
                 hand.add(deck.getCards().get(cardNumber));
                 System.out.println("Hidden card:" + deck.getCards().get(cardNumber).getName());
                 result = calculateResult(hand);
-
-            System.out.println("Rezultat: " + result + "\n");
+                System.out.println("Rezultat: " + result + "\n");
+                break;
 
                 //medium-high risk 14
             case "med-high risk":
@@ -61,6 +62,7 @@ public class Game
                 System.out.println("Hidden card:" + deck.getCards().get(cardNumber).getName());
                 result = calculateResult(hand);
                 System.out.println("Rezultat: " + result + "\n");
+                break;
 
                 //medium risk 12
             case "med risk":
@@ -71,7 +73,7 @@ public class Game
                         acesInHand++;
                     }
                     hand.add(deck.getCards().get(cardNumber));
-                    System.out.println(deck.getCards().get(cardNumber).getName());
+                    System.out.println("Dealer Draw: " + deck.getCards().get(cardNumber).getName());
                     result = calculateResult(hand);
                 }
                 //hidden card
@@ -79,7 +81,8 @@ public class Game
                 hand.add(deck.getCards().get(cardNumber));
                 System.out.println("Hidden card:" + deck.getCards().get(cardNumber).getName());
                 result = calculateResult(hand);
-                System.out.println("Rezultat: " + result + "\n");
+                System.out.println("Dealer Rezult: " + result + "\n");
+                break;
 
                 //low-medium risk 10
             case "low-med risk":
@@ -99,6 +102,7 @@ public class Game
                 System.out.println("Hidden card:" + deck.getCards().get(cardNumber).getName());
                 result = calculateResult(hand);
                 System.out.println("Rezultat: " + result + "\n");
+                break;
 
 
                 //low risk 8
@@ -119,6 +123,7 @@ public class Game
                 System.out.println("Hidden card:" + deck.getCards().get(cardNumber).getName());
                 result = calculateResult(hand);
                 System.out.println("Rezultat: " + result + "\n");
+                break;
 
 
         }
@@ -154,6 +159,7 @@ public class Game
                     result = calculateResult(hand);
                 }
                 System.out.println("Rezultat: " + result + "\n");
+                break;
 
                 //medium-high risk 18
             case "med-high risk":
@@ -168,6 +174,7 @@ public class Game
                     result = calculateResult(hand);
                 }
                 System.out.println("Rezultat: " + result + "\n");
+                break;
 
                 //medium risk 16
             case "med risk":
@@ -178,10 +185,11 @@ public class Game
                         acesInHand++;
                     }
                     hand.add(deck.getCards().get(cardNumber));
-                    System.out.println(deck.getCards().get(cardNumber).getName());
+                    System.out.println("Player Draw: " + deck.getCards().get(cardNumber).getName());
                     result = calculateResult(hand);
                 }
-                System.out.println("Rezultat: " + result + "\n");
+                System.out.println("Player Rezult: " + result + "\n");
+                break;
 
                 //low-medium risk 12
             case "low-med risk":
@@ -196,6 +204,7 @@ public class Game
                     result = calculateResult(hand);
                 }
                 System.out.println("Rezultat: " + result + "\n");
+                break;
 
 
                 //low risk 10
@@ -211,6 +220,7 @@ public class Game
                     result = calculateResult(hand);
                 }
                 System.out.println("Rezultat: " + result + "\n");
+                break;
 
 
         }
