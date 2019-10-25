@@ -15,7 +15,7 @@ public class Deck
             for (short b = 0; b <= 12; b++) {
                 if (b == 0) {
                     //constructor as
-                    cards.add(new Card(b, 13));
+                    cards.add(new Card(b, 1));
                 } else {
                     //constructor carte normala
                     cards.add(new Card(b));

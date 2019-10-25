@@ -35,6 +35,8 @@ public class Blackjack
         String riskpayer = in.nextLine();
 
 
+
+
         for (int i=0; i <= Integer.parseInt(counts) - 1 ; i++) {
 
             //initializare player si dealer
@@ -45,10 +47,10 @@ public class Blackjack
             //verificare blackjack pentru dealer si player
             if ((dealer.result == 21 && player.result < 21) || (dealer.result == 21 && player.result > 21)) {
                 dealerwins++;
-                System.out.println("Dealer Wins");
+                System.out.println("!!!!!!Dealer Wins!!!!!!\n");
             } else if ((player.result == 21 && dealer.result < 21) || (player.result == 21 && dealer.result > 21)) {
                 playerwins++;
-                System.out.println("Player Wins");
+                System.out.println("!!!!!!Player Wins!!!!!!\n");
             }
             //verifica daca au sub 21
             else if (dealer.result < 21) {
