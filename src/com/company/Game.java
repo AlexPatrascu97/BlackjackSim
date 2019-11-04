@@ -25,7 +25,7 @@ public class Game
 
             //high risk 16
             case "high risk":
-            while (result < 16) {
+            while (result < 17) {
                 result = 0;
                 cardNumber++;
                 if (deck.getCards().get(cardNumber).getSecondCount() > 0) {
@@ -37,11 +37,7 @@ public class Game
                 result = calculateResult(hand);
 
             }
-                //hidden card
-
-                System.out.println("Hidden card: " + deck.getCards().get(cardNumber + 1).getName());
-                result= calculateResult(hand) + deck.getCards().get(cardNumber + 1).getCount() ;
-                System.out.println("Dealer Result: " + result + "\n");
+                System.out.println("Rezultat: " + result + "\n");
                 break;
 
                 //medium-high risk 14
@@ -58,11 +54,7 @@ public class Game
                     System.out.println("Dealer Draw: " + deck.getCards().get(cardNumber).getName());
                     result = calculateResult(hand);
                 }
-                //hidden card
-
-                System.out.println("Hidden card: " + deck.getCards().get(cardNumber + 1).getName());
-                result= calculateResult(hand) + deck.getCards().get(cardNumber + 1).getCount() ;
-                System.out.println("Dealer Result: " + result + "\n");
+                System.out.println("Rezultat: " + result + "\n");
                 break;
 
                 //medium risk 12
@@ -79,11 +71,7 @@ public class Game
                     System.out.println("Dealer Draw: " + deck.getCards().get(cardNumber).getName());
                     result = calculateResult(hand);
                 }
-                //hidden card
-
-                System.out.println("Hidden card: " + deck.getCards().get(cardNumber + 1).getName());
-                result= calculateResult(hand) + deck.getCards().get(cardNumber + 1).getCount() ;
-                System.out.println("Dealer Result: " + result + "\n");
+                System.out.println("Rezultat: " + result + "\n");
                 break;
 
                 //low-medium risk 10
@@ -99,11 +87,7 @@ public class Game
                     System.out.println("Dealer Draw: " + deck.getCards().get(cardNumber).getName());
                     result = calculateResult(hand);
                 }
-                //hidden card
-
-                System.out.println("Hidden card: " + deck.getCards().get(cardNumber + 1).getName());
-                result= calculateResult(hand) + deck.getCards().get(cardNumber + 1).getCount() ;
-                System.out.println("Dealer Result: " + result + "\n");
+                System.out.println("Rezultat: " + result + "\n");
                 break;
 
 
@@ -120,11 +104,7 @@ public class Game
                     System.out.println("Dealer Draw: " + deck.getCards().get(cardNumber).getName());
                     result = calculateResult(hand);
                 }
-                //hidden card
-
-                System.out.println("Hidden card: " + deck.getCards().get(cardNumber + 1).getName());
-                result= calculateResult(hand) + deck.getCards().get(cardNumber + 1).getCount() ;
-                System.out.println("Dealer Result: " + result + "\n");
+                System.out.println("Rezultat: " + result + "\n");
                 break;
 
         }

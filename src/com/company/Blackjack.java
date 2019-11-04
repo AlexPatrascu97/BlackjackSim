@@ -40,12 +40,16 @@ public class Blackjack
         for (int i=0; i <= Integer.parseInt(counts) - 1 ; i++) {
 
             //initializare player si dealer
-            dealer.dealer(riskdealer);
             player.player(riskpayer);
+            dealer.dealer(riskdealer);
 
 
+            if(player.result > 21){
+                dealerwins++;
+                System.out.println("!!!!!!Dealer Wins!!!!!!\n");
+            }
             //verificare blackjack pentru dealer si player
-            if ((dealer.result == 21 && player.result < 21) || (dealer.result == 21 && player.result > 21)) {
+           else if ((dealer.result == 21 && player.result < 21) || (dealer.result == 21 && player.result > 21)) {
                 dealerwins++;
                 System.out.println("!!!!!!Dealer Wins!!!!!!\n");
             } else if ((player.result == 21 && dealer.result < 21) || (player.result == 21 && dealer.result > 21)) {
