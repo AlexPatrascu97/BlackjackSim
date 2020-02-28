@@ -7,7 +7,7 @@ public class Deck
 {
     ArrayList<Card> cards;
 
-    Deck() {
+    public Deck() {
         cards = new ArrayList<>();
         //forma
         for (short a = 0; a <= 3; a++) {
@@ -15,10 +15,10 @@ public class Deck
             for (short b = 0; b <= 12; b++) {
                 if (b == 0) {
                     //constructor as
-                    cards.add(new Card(b, 1));
+                    cards.add(new Card(b, 13, a));
                 } else {
                     //constructor carte normala
-                    cards.add(new Card(b));
+                    cards.add(new Card(b,a));
                 }
             }
         }
@@ -35,4 +35,6 @@ public class Deck
     public Card getCard(int i) {
         return cards.get(i);
     }
+
+
 }
