@@ -1,9 +1,12 @@
 package com.company;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
 
 import static com.sun.javafx.fxml.expression.Expression.greaterThanOrEqualTo;
 import static com.sun.javafx.fxml.expression.Expression.lessThanOrEqualTo;
@@ -370,4 +373,121 @@ public class GameTest {
 
     }
 
+    @Test
+    public void playerBlackJack() {
+        Game BJDeck = new Game();
+        Card Ace = new Card(0, 13, 1);
+        Ace.count = 21;
+        for (int i = 0; i < 52; i++) {
+            BJDeck.deck.setCard(Ace, i);
+        }
+
+        BJDeck.player("high risk");
+        assertEquals(21,BJDeck.result);
+    }
+
+    @Test
+    public void dealerBlackJack() {
+        Game BJDeck = new Game();
+        Card Ace = new Card(0, 13, 1);
+        Ace.count = 21;
+        for (int i = 0; i < 52; i++) {
+            BJDeck.deck.setCard(Ace, i);
+        }
+
+        BJDeck.dealer("high risk");
+        assertEquals(21,BJDeck.result);
+    }
+
+
+    @Test
+    public void allRisksGetsAnAcePlayer() {
+        Game AllAces = new Game();
+        Card Ace = new Card(0,13,1);
+        for(int i = 0; i<52; i++){
+            AllAces.deck.setCard(Ace,i);
+        }
+
+        Game AllAces2 = new Game();
+        for(int i = 0; i<52; i++){
+            AllAces2.deck.setCard(Ace,i);
+        }
+
+        Game AllAces3 = new Game();
+        for(int i = 0; i<52; i++){
+            AllAces3.deck.setCard(Ace,i);
+        }
+
+        Game AllAces4 = new Game();
+        for(int i = 0; i<52; i++){
+            AllAces4.deck.setCard(Ace,i);
+        }
+
+        Game AllAces5 = new Game();
+        for(int i = 0; i<52; i++){
+            AllAces5.deck.setCard(Ace,i);
+        }
+
+        AllAces.player("high risk");
+        assertThat(AllAces.acesInHand).isGreaterThanOrEqualTo(1);
+
+        AllAces2.player("med-high risk");
+        assertThat(AllAces2.acesInHand).isGreaterThanOrEqualTo(1);
+
+        AllAces3.player("med risk");
+        assertThat(AllAces3.acesInHand).isGreaterThanOrEqualTo(1);
+
+        AllAces4.player("low-med risk");
+        assertThat(AllAces4.acesInHand).isGreaterThanOrEqualTo(1);
+
+        AllAces5.player("low risk");
+        assertThat(AllAces5.acesInHand).isGreaterThanOrEqualTo(1);
+
+    }
+
+
+    @Test
+    public void allRisksGetsAnAceDealer() {
+        Game AllAces = new Game();
+        Card Ace = new Card(0,13,1);
+        for(int i = 0; i<52; i++){
+            AllAces.deck.setCard(Ace,i);
+        }
+
+        Game AllAces2 = new Game();
+        for(int i = 0; i<52; i++){
+            AllAces2.deck.setCard(Ace,i);
+        }
+
+        Game AllAces3 = new Game();
+        for(int i = 0; i<52; i++){
+            AllAces3.deck.setCard(Ace,i);
+        }
+
+        Game AllAces4 = new Game();
+        for(int i = 0; i<52; i++){
+            AllAces4.deck.setCard(Ace,i);
+        }
+
+        Game AllAces5 = new Game();
+        for(int i = 0; i<52; i++){
+            AllAces5.deck.setCard(Ace,i);
+        }
+
+        AllAces.dealer("high risk");
+        assertThat(AllAces.acesInHand).isGreaterThanOrEqualTo(1);
+
+        AllAces2.dealer("med-high risk");
+        assertThat(AllAces2.acesInHand).isGreaterThanOrEqualTo(1);
+
+        AllAces3.dealer("med risk");
+        assertThat(AllAces3.acesInHand).isGreaterThanOrEqualTo(1);
+
+        AllAces4.dealer("low-med risk");
+        assertThat(AllAces4.acesInHand).isGreaterThanOrEqualTo(1);
+
+        AllAces5.dealer("low risk");
+        assertThat(AllAces5.acesInHand).isGreaterThanOrEqualTo(1);
+
+    }
 }

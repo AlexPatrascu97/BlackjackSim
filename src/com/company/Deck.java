@@ -36,5 +36,9 @@ public class Deck
         return cards.get(i);
     }
 
+    public void  setCard(Card card,int poz) {
+        cards.set(poz, card);
+    }
+
 
 }

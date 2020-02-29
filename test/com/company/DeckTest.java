@@ -104,5 +104,16 @@ public class DeckTest {
 
     }
 
+    @Test
+    public void setCard() {
+        Card Ace = new Card(0,13,0);
+        Deck TestDeck = new Deck();
+        for(int i = 0; i<52; i++){
+            TestDeck.setCard(Ace,i);
+        }
+        TestDeck.getCards().forEach((card) -> assertEquals("Ace",card.getName()));
+
+
+    }
 
 }

@@ -29,13 +29,11 @@ public class Game
                 result = 0;
                 cardNumber++;
                 if (deck.getCards().get(cardNumber).getSecondCount() > 0) {
-
                     acesInHand++;
                 }
                 hand.add(deck.getCards().get(cardNumber));
                 System.out.println("Dealer Draw: " + deck.getCards().get(cardNumber).getName());
                 result = calculateResult(hand,17);
-
             }
                 System.out.println("Rezultat: " + result + "\n");
                 break;
@@ -76,11 +74,11 @@ public class Game
 
                 //low-medium risk 10
             case "low-med risk":
+                result = 0;
                 while (result < 10) {
                     result = 0;
                     cardNumber++;
                     if (deck.getCards().get(cardNumber).getSecondCount() > 0) {
-
                         acesInHand++;
                     }
                     hand.add(deck.getCards().get(cardNumber));
@@ -110,7 +108,6 @@ public class Game
         }
 
         if (result == 21) {
-
             System.out.println("BLACKJACK");
         }
         return result;

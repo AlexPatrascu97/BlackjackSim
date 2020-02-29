@@ -3,7 +3,12 @@ package com.company;
 import java.util.Scanner;
 
 public class Blackjack {
-    public static void main(String[] args) {
+
+    static Game player = new Game();
+    static Game dealer = new Game();
+
+
+    public static void main (String[] args) {
         int dealerwins = 0;
         int playerwins = 0;
         int drawresult = 0;
@@ -11,8 +16,7 @@ public class Blackjack {
 
             playerwins = 0;
             dealerwins = 0;
-            Game player = new Game();
-            Game dealer = new Game();
+
 
             Scanner in = new Scanner(System.in);
             System.out.println("Legend for Player: \n" +
@@ -26,6 +30,7 @@ public class Blackjack {
             String counts = in.nextLine();
             System.out.println("Insert Player risk (low risk, low-med risk, med risk, med-high risk, high risk)");
             String riskpayer = in.nextLine();
+
 
 
             for (int i = 0; i <= Integer.parseInt(counts) - 1; i++) {
@@ -92,7 +97,11 @@ public class Blackjack {
 
         }
 
-    }
+
+
+}
+
+
 
 /*
 rezultate pe cele 3 seturi low,med,high(ce fac) printrui cu cele 3 rezultate

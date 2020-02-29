@@ -18,10 +18,10 @@ public class Card
     String[] suits = {"diamonds", "clubs", "hearts", "spades"};
 
     public Card(int num, int suit) {
-        if((num <= 0 ) && (num >= 12)){
+        if((num < 0 ) || (num > 12)){
             throw new IndexOutOfBoundsException("Out of Bounds");
         }
-        if((suit <= 0 ) && (suit >= 3)){
+        if((suit < 0 ) || (suit > 3)){
             throw new IndexOutOfBoundsException();
         }
         this.name = names[num];
@@ -33,7 +33,7 @@ public class Card
         if((num1 != 0) || (num2 != 13)){
             throw new IllegalArgumentException();
         }
-        if((suit <= 0 ) && (suit >= 3)){
+        if((suit < 0 ) || (suit > 3)){
             throw new IndexOutOfBoundsException();
         }
 

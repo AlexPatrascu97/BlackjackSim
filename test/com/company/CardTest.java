@@ -90,11 +90,10 @@ public class CardTest {
     public void invalidCardNumberAssertJ() {
 
         assertThatThrownBy(() -> new Card(13,0))
-                .isInstanceOf(IndexOutOfBoundsException.class)
-                .hasMessageContaining("13");
+                .isInstanceOf(IndexOutOfBoundsException.class);
+
         assertThatThrownBy(() -> new Card(-1,0))
-                .isInstanceOf(IndexOutOfBoundsException.class)
-                .hasMessageContaining("-1");
+                .isInstanceOf(IndexOutOfBoundsException.class);
 
 
     }
@@ -103,14 +102,14 @@ public class CardTest {
     public void invalidCardSuitAssertJ() {
 
         assertThatThrownBy(() -> new Card(4,6))
-                .isInstanceOf(IndexOutOfBoundsException.class)
-                .hasMessageContaining("6");
+                .isInstanceOf(IndexOutOfBoundsException.class);
+
         assertThatThrownBy(() -> new Card(8,5))
-                .isInstanceOf(IndexOutOfBoundsException.class)
-                .hasMessageContaining("5");
+                .isInstanceOf(IndexOutOfBoundsException.class);
+
         assertThatThrownBy(() -> new Card(0,13,5))
-                .isInstanceOf(IndexOutOfBoundsException.class)
-                .hasMessageContaining("5");
+                .isInstanceOf(IndexOutOfBoundsException.class);
+
 
 
     }
@@ -137,5 +136,11 @@ public class CardTest {
         new Card(13,1);
     }
 
+    @Test
+    public void forcingWrongSuit(){
+        Card suitCard = new Card(0,0);
+        suitCard.suit = "clubs";
+        assertEquals("clubs",suitCard.getSuit());
+    }
 
 }
