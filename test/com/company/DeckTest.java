@@ -79,8 +79,8 @@ public class DeckTest {
     public void getCard() {
         assertEquals("Ace",deck.getCard(0).getName());
         assertEquals("diamonds",deck.getCard(0).getSuit());
-        assertEquals("King",deck.getCard(0).getName());
-        assertEquals("spades",deck.getCard(0).getSuit());
+        assertEquals("King",deck.getCard(51).getName());
+        assertEquals("spades",deck.getCard(51).getSuit());
 
         for(int i=0; i<deck.getCards().size(); i++){
             assertEquals(deck.getCards().get(i).getName(), names[i%13]);

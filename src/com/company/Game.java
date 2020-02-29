@@ -23,7 +23,7 @@ public class Game
 
         switch(strat) {
 
-            //high risk 16
+            //high risk 17
             case "high risk":
             while (result < 17) {
                 result = 0;
@@ -34,7 +34,7 @@ public class Game
                 }
                 hand.add(deck.getCards().get(cardNumber));
                 System.out.println("Dealer Draw: " + deck.getCards().get(cardNumber).getName());
-                result = calculateResult(hand);
+                result = calculateResult(hand,17);
 
             }
                 System.out.println("Rezultat: " + result + "\n");
@@ -52,7 +52,7 @@ public class Game
                     }
                     hand.add(deck.getCards().get(cardNumber));
                     System.out.println("Dealer Draw: " + deck.getCards().get(cardNumber).getName());
-                    result = calculateResult(hand);
+                    result = calculateResult(hand,14);
                 }
                 System.out.println("Rezultat: " + result + "\n");
                 break;
@@ -69,7 +69,7 @@ public class Game
                     }
                     hand.add(deck.getCards().get(cardNumber));
                     System.out.println("Dealer Draw: " + deck.getCards().get(cardNumber).getName());
-                    result = calculateResult(hand);
+                    result = calculateResult(hand,12);
                 }
                 System.out.println("Rezultat: " + result + "\n");
                 break;
@@ -85,7 +85,7 @@ public class Game
                     }
                     hand.add(deck.getCards().get(cardNumber));
                     System.out.println("Dealer Draw: " + deck.getCards().get(cardNumber).getName());
-                    result = calculateResult(hand);
+                    result = calculateResult(hand,10);
                 }
                 System.out.println("Rezultat: " + result + "\n");
                 break;
@@ -102,7 +102,7 @@ public class Game
                     }
                     hand.add(deck.getCards().get(cardNumber));
                     System.out.println("Dealer Draw: " + deck.getCards().get(cardNumber).getName());
-                    result = calculateResult(hand);
+                    result = calculateResult(hand,8);
                 }
                 System.out.println("Rezultat: " + result + "\n");
                 break;
@@ -137,7 +137,7 @@ public class Game
                     }
                     hand.add(deck.getCards().get(cardNumber));
                     System.out.println("Player Draw: " + deck.getCards().get(cardNumber).getName());
-                    result = calculateResult(hand);
+                    result = calculateResult(hand,21);
                 }
                 System.out.println("Rezultat: " + result + "\n");
                 break;
@@ -152,7 +152,7 @@ public class Game
                     }
                     hand.add(deck.getCards().get(cardNumber));
                     System.out.println("Player Draw: " + deck.getCards().get(cardNumber).getName());
-                    result = calculateResult(hand);
+                    result = calculateResult(hand,18);
                 }
                 System.out.println("Rezultat: " + result + "\n");
                 break;
@@ -167,12 +167,12 @@ public class Game
                     }
                     hand.add(deck.getCards().get(cardNumber));
                     System.out.println("Player Draw: " + deck.getCards().get(cardNumber).getName());
-                    result = calculateResult(hand);
+                    result = calculateResult(hand,16);
                 }
                 System.out.println("Player Rezult: " + result + "\n");
                 break;
 
-                //low-medium risk 12
+                //low-medium risk 14
             case "low-med risk":
                 while (result < 14) {
                     cardNumber++;
@@ -182,13 +182,13 @@ public class Game
                     }
                     hand.add(deck.getCards().get(cardNumber));
                     System.out.println("Player Draw: " + deck.getCards().get(cardNumber).getName());
-                    result = calculateResult(hand);
+                    result = calculateResult(hand,14);
                 }
                 System.out.println("Rezultat: " + result + "\n");
                 break;
 
 
-                //low risk 10
+                //low risk 12
             case "low risk":
                 while (result < 12) {
                     cardNumber++;
@@ -198,7 +198,7 @@ public class Game
                     }
                     hand.add(deck.getCards().get(cardNumber));
                     System.out.println("Player Draw: " + deck.getCards().get(cardNumber).getName());
-                    result = calculateResult(hand);
+                    result = calculateResult(hand,12);
                 }
                 System.out.println("Rezultat: " + result + "\n");
                 break;
@@ -213,16 +213,31 @@ public class Game
         return result;
     }
 
-    public int calculateResult(ArrayList<Card> cards) {
+    public int calculateResult(ArrayList<Card> cards,int risk) {
         int sum = 0;
+        int acesFound = 0;
         for (int j = acesInHand; j >= 0; j--) {
             sum = 0;
             for (int i = 0; i < cards.size(); i++) {
                 int smallAcesInHand = acesInHand;
-                if (cards.get(i).getSecondCount() > 0 && smallAcesInHand > 0) {
+                if((cards.get(i).getSecondCount() > 0 && smallAcesInHand > 0)&&(sum + cards.get(i).getCount() == 21)){
+                    sum = sum + cards.get(i).getCount();
+                    smallAcesInHand--;
+                    acesFound ++;
+                }
+               else if((cards.get(i).getSecondCount() > 0 && smallAcesInHand > 0)&&(sum + cards.get(i).getCount() == risk)){
+                    sum = sum + cards.get(i).getCount();
+                    smallAcesInHand--;
+                    acesFound ++;
+
+                }
+                else if (cards.get(i).getSecondCount() > 0 && smallAcesInHand > 0) {
                     sum = sum + cards.get(i).getSecondCount();
                     smallAcesInHand--;
-                } else {
+                    acesFound ++;
+
+                }
+                else {
                     sum = sum + cards.get(i).getCount();
                 }
             }

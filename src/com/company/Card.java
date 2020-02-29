@@ -1,4 +1,11 @@
 package com.company;
+/*
+JUnit4 test cases with expected exceptions are shown as not covered even
+though they were executed. The reason for this is that underlying JaCoCo
+code coverage library only considers code as executed when certain probes
+are executed. For successful test cases marked with @Test{expected=...}
+this is not the case.
+ */
 
 public class Card
 {
@@ -12,7 +19,7 @@ public class Card
 
     public Card(int num, int suit) {
         if((num <= 0 ) && (num >= 12)){
-            throw new IndexOutOfBoundsException();
+            throw new IndexOutOfBoundsException("Out of Bounds");
         }
         if((suit <= 0 ) && (suit >= 3)){
             throw new IndexOutOfBoundsException();
@@ -23,15 +30,13 @@ public class Card
     }
 
     public Card(int num1, int num2, int suit) {
-        if((num1 <= 0 ) && (num1 >= 12)){
-            throw new IndexOutOfBoundsException();
+        if((num1 != 0) || (num2 != 13)){
+            throw new IllegalArgumentException();
         }
         if((suit <= 0 ) && (suit >= 3)){
             throw new IndexOutOfBoundsException();
         }
-        if ((num2 != 13) || (num1 != 0)){
-            throw new IllegalArgumentException();
-        }
+
         this.name = names[num1];
         this.count = counts[num1];
         this.secondCount = counts[num2];
