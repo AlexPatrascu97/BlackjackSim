@@ -28,6 +28,8 @@ public class GameTest {
     private Game medHighPlayer;
     private Game highPlayer;
 
+
+    //initializam obiectele pentru testare
     @Before
     public void CardTestSetup() {
 
@@ -45,15 +47,21 @@ public class GameTest {
 
     }
 
+    //testam daca initializarea unui dealer cu strategia specificata este corecta
     @Test
     public void dealer() {
 
+        //setam fiecare strategie pentru un dealer
         highDealer.dealer("high risk");
         medHighDealer.dealer("med-high risk");
         medDealer.dealer("med risk");
         lowMedDealer.dealer("low-med risk");
         lowDealer.dealer("low risk");
 
+        //folosind metoda isGreaterThanOrEqualTo pentru a verifica daca valoarea este <= 17
+        //stategia dealerului la risk mare este de a avea valoarea 17 in mana
+        //astfel acesta nu poate avea o valoarea mai mica de 17, cea ce putem testa
+        //aceasta tehnica este aplicata si pentru restul strategiilor
         int resHighDealer = highDealer.dealer("high risk");
         assertThat(resHighDealer).isGreaterThanOrEqualTo(17);
 
@@ -71,15 +79,21 @@ public class GameTest {
 
     }
 
+    //testam daca initializarea unui player cu strategia specificata este corecta
     @Test
     public void player() {
 
+        //setam fiecare strategie pentru un player
         highPlayer.player("high risk");
         medHighPlayer.player("med-high risk");
         medPlayer.player("med risk");
         lowMedPlayer.player("low-med risk");
         lowPlayer.player("low risk");
 
+        //folosind metoda isGreaterThanOrEqualTo pentru a verifica daca valoarea este <= 21
+        //stategia playerului la risk mare este de a avea valoarea 21 in mana
+        //astfel acesta nu poate avea o valoarea mai mica de 21, cea ce putem testa
+        //aceasta tehnica este aplicata si pentru restul strategiilor
         int resHighPlayer = highPlayer.player("high risk");
         assertThat(resHighPlayer).isGreaterThanOrEqualTo(21);
 
@@ -97,13 +111,19 @@ public class GameTest {
 
     }
 
+    //calculam rezultatul atunci cand avem 2 asi in mana
+    //daca avem 2 Asi rezultatul este 22 cea cea inseamna ca depasim
+    //astfel se va alege valoarea de 1 pentru cei 2 Asi daca se depaseste
+    //Ambii Asi trebuie sa aiba aceasi valoare 1 sau 11
     @Test
     public void calculateResultForTwoAces() {
+        //initializam 2 carti si le verificam
         Card Ace1 = new Card(0,13,0);
         Card Ace2 = new Card(0,13,1);
         assertEquals("Ace", Ace1.getName());
         assertEquals("Ace", Ace2.getName());
 
+        //fortam 2 Asi in pachet
         ArrayList<Card> Cards = new ArrayList<Card>();
         Cards.add(Ace1);
         Cards.add(Ace2);
@@ -112,52 +132,67 @@ public class GameTest {
         calcTest.acesInHand = 2;
         int resTwoAces = calcTest.calculateResult(Cards,21);
 
+        //verificam
         assertEquals(2,resTwoAces);
 
     }
 
+    //calcumlam rezultatul in cazul unui singur As
     @Test
     public void calculateResultForOneAces() {
+        //initializam 2 carti si le verificam
         Card Ace = new Card(0,13,0);
         Card King = new Card(11,1);
         assertEquals("Ace", Ace.getName());
         assertEquals("Queen", King.getName());
 
+        //fortam un As si un Rege
         ArrayList<Card> Cards = new ArrayList<Card>();
         Cards.add(King);
         Cards.add(Ace);
 
-
+        //fortam un meci prestabilit
         Game calcTest = new Game();
         calcTest.acesInHand = 1;
         int resOneAce = calcTest.calculateResult(Cards,21);
 
+        //verificam
         assertEquals(21,resOneAce);
 
     }
 
+
+    //calcumlam rezultatul in cazul unui singur As in caz de Blackjack
     @Test
     public void calculateResultForOneAcesForBlackJack() {
+        //initializam 2 carti si le verificam
         Card Ace = new Card(0,13,0);
         Card King = new Card(12,1);
         assertEquals("Ace", Ace.getName());
         assertEquals("King", King.getName());
 
+        //fortam un As si un Rege
         ArrayList<Card> Cards = new ArrayList<Card>();
         Cards.add(King);
         Cards.add(Ace);
 
+        //fortam un meci prestabilit
         Game calcTest = new Game();
         calcTest.acesInHand = 1;
         int resOneAce = calcTest.calculateResult(Cards,21);
 
+        //verificam
         assertEquals(21,resOneAce);
 
     }
 
+    //calculam rezultatul in cazul unui meci al playerului si al dealerului cu
+    // risk mare, mediu-mare, mediu, mic-mediu, mic
+    //prezentat un urmatoarele 10 teste
     @Test
     public void calculateResultForHighRisksPlayer() {
 
+        //initializam cartile
         Card Four = new Card(3,0);
         Card King = new Card(12,1);
         Card Seven = new Card(6,1);
@@ -165,15 +200,17 @@ public class GameTest {
         assertEquals("King", King.getName());
         assertEquals("7", Seven.getName());
 
+        //fortam cartile in pachet
         ArrayList<Card> Cards = new ArrayList<Card>();
         Cards.add(King);
         Cards.add(Seven);
         Cards.add(Four);
 
-
+        //fortam un meci prestabilit
         Game calcTest = new Game();
         int resOneAce = calcTest.calculateResult(Cards,21);
 
+        //verificam
         assertEquals(21,resOneAce);
 
     }
@@ -373,6 +410,9 @@ public class GameTest {
 
     }
 
+
+    //testam daca un dealer si un player
+    //realizeaza un blackjack
     @Test
     public void playerBlackJack() {
         Game BJDeck = new Game();

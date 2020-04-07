@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.*;
+//librarie extra
 import static org.assertj.core.api.Assertions.*;
 
 public class CardTest {
@@ -19,6 +20,7 @@ public class CardTest {
     @Rule
     public final ExpectedException exception = ExpectedException.none();
 
+    //initilizare obiecte pentru testare inaintea lor
     @Before
     public void CardTestSetup() {
 
@@ -30,6 +32,7 @@ public class CardTest {
 
     }
 
+    //testam metoda getName din clasa Card
     @Test
     public void getName() {
         assertEquals("King", King.getName());
@@ -37,6 +40,7 @@ public class CardTest {
         assertEquals("Jack", Jack.getName());
     }
 
+    //testam metoda getCount "valoarea cartii in jocul de blackjack" din clasa Card
     @Test
     public void getCount() {
         assertEquals(11, Ace.getCount());
@@ -46,6 +50,7 @@ public class CardTest {
         assertEquals(10, Jack.getCount());
     }
 
+    //testam metoda getSecondCount "valoarea unui As in jocul de blackjack" din clasa Card
     @Test
     public void getSecondCount() {
         assertEquals(-1, King.getSecondCount());
@@ -54,6 +59,7 @@ public class CardTest {
         assertEquals(1, Ace2ndConstructor.getSecondCount());
     }
 
+    //testam metoda getSuit pentru a vedea simbolul unei carti
     @Test
     public void getSuit() {
         assertEquals("diamonds", Ace.getSuit());
@@ -62,30 +68,37 @@ public class CardTest {
         assertEquals("spades", Jack.getSuit());
     }
 
+    //testam cazul unei carti inavalide din punct de vedere al valorii
     @Test(expected = IndexOutOfBoundsException.class )
     public void invalidCardNumber() throws Exception {
       Card Invalid = new Card(13,1);
       Card Invalid2 = new Card(-1,1);
     }
 
+    //fortam o carte cu valoare de simbol gresite
     @Test(expected = IndexOutOfBoundsException.class )
     public void invalidCardSuit()
     {
         new Card(7,6);
     }
 
+    //fortam un As cu a doua valoare gresita
     @Test(expected = IllegalArgumentException.class )
     public void invalidAceSecondValue()
     {
         Card Ace = new Card(0,7,0);
     }
 
+    //un As corect Card Ace = new Card(0,13,0);
+
+    //fortam un As cu prima valoare gresita
     @Test(expected = IllegalArgumentException.class )
     public void notAnAceCard()
     {
         Card Ace = new Card(3,13,0);
     }
 
+    //testam o carte invalida din punct de vedere al valorii folosind libraria assertJ
     @Test
     public void invalidCardNumberAssertJ() {
 
@@ -98,6 +111,7 @@ public class CardTest {
 
     }
 
+    //testam o carte invalida din punct de vedere al formei folosind libraria assertJ
     @Test
     public void invalidCardSuitAssertJ() {
 
@@ -111,9 +125,9 @@ public class CardTest {
                 .isInstanceOf(IndexOutOfBoundsException.class);
 
 
-
     }
 
+    //testam o carte invalida din punct de vedere al formei folosind libraria assertJ
     @Test
     public void invalidAceSecondValueAssertJ() {
 
@@ -122,6 +136,7 @@ public class CardTest {
 
     }
 
+    //fortam un As cu prima valoare gresita folosind libraria assertJ
     @Test
     public void notAnAceCardAssertJ() {
 
@@ -130,12 +145,15 @@ public class CardTest {
 
     }
 
+    //testam o carte gresita din punct de vedere al valorii
+    // folosind metoda expect a clasei exception
     @Test
     public void doStuffThrowsIndexOutOfBoundsException() {
         exception.expect(IndexOutOfBoundsException.class);
         new Card(13,1);
     }
 
+    //fortam forma gresita si o testam cu ajutorul metodei assertEquals
     @Test
     public void forcingWrongSuit(){
         Card suitCard = new Card(0,0);

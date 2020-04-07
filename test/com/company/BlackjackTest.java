@@ -16,6 +16,7 @@ public class BlackjackTest {
     public void setUp() throws Exception {
     }
 
+    //testam daca merge sa introducem input dintr-un fisier pe post de "input uman"
     @Test
     public void main() throws FileNotFoundException {
         System.out.println("main");
@@ -27,7 +28,8 @@ public class BlackjackTest {
         System.setIn(original);
     }
 
-
+    //generam special un pachet plin de regi pentru a verifica
+    // daca rezultatul jucatorilor este mai mare decat 21
     @Test
     public void over21() throws FileNotFoundException {
         System.out.println("main");
